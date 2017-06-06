@@ -40,3 +40,8 @@ parameters:
         description: "Optionally commit the config after loading"
         default: true
         position: 6
+    config_lock:
+        type: "boolean"
+        description: "Lock the configuration when loading the config"
+        default: true
+        position: 7

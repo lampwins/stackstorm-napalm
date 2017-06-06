@@ -30,6 +30,7 @@ class NapalmBaseAction(Action):
         driver = std_kwargs.get('driver')
         port = std_kwargs.get('port')
         htmlout = std_kwargs.get('htmlout', False)
+        config_lock = std_kwargs.get('config_lock')
 
         # Look up the driver  and if it's not given from the configuration file
         # Also overides the hostname since we might have a partial host i.e. from
@@ -38,10 +39,12 @@ class NapalmBaseAction(Action):
 
         login = self.get_credentials(found_device['credentials'])
 
-        if not port:
-            optional_args = None
-        else:
-            optional_args = {'port': str(port)}
+        optional_args = {}
+        if port:
+            optional_args['port'] = str(port)
+
+        if config_lock is not None:  # could be false
+            optional_args['config_lock'] = config_lock
 
         # Some actions like to use these params in log messages, or commands, etc.
         # So we tie to instance for easy lookup
