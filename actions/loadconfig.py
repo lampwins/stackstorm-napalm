@@ -5,7 +5,7 @@ class NapalmLoadConfig(NapalmBaseAction):
     """Load configuration into network device via NAPALM
     """
 
-    def run(self, config_file, method, **std_kwargs):
+    def run(self, config_file, method, commit, **std_kwargs):
 
         try:
             if not method:
@@ -23,7 +23,8 @@ class NapalmLoadConfig(NapalmBaseAction):
                 else:
                     device.load_merge_candidate(filename=config_file)
 
-                device.commit_config()
+                if commit:
+                    device.commit_config()
 
         except Exception, e:
             self.logger.error(str(e))

@@ -8,6 +8,6 @@ keywords:
     - juniper
     - arista
     - ibm
-version: 0.2.4
-author: mierdin, Rob Woodward
+version: 0.3.0
+author: mierdin, Rob Woodward, John Anderson
 email: info@stackstorm.com

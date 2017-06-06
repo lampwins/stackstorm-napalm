@@ -1,9 +1,9 @@
 ---
-name: "loadconfig"
+name: "commit"
 runner_type: "python-script"
-description: "Loads (merge) a configuration to a network device using NAPALM."
+description: "Commits a network device configuration using NAPALM."
 enabled: true
-entry_point: "loadconfig.py"
+entry_point: "commit.py"
 parameters:
     hostname:
         type: "string"
@@ -25,18 +25,3 @@ parameters:
         description: "The credentials group which contains the username and password to log in"
         required: false
         position: 3
-    config_file:
-        type: "string"
-        description: "configuration to load to device"
-        required: true
-        position: 4
-    method:
-        type: "string"
-        description: "Method to load the config (either 'merge' or 'replace', default is 'merge')"
-        required: false
-        position: 5
-    commit:
-        type: "boolean"
-        description: "Optionally commit the config after loading"
-        default: true
-        position: 6
